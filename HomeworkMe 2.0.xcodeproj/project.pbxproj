@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56221DEF73900AC3A08 /* AppDelegate.swift */; };
+		68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56421DEF73900AC3A08 /* ViewController.swift */; };
+		68FCE56821DEF73900AC3A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56621DEF73900AC3A08 /* Main.storyboard */; };
+		68FCE56B21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56921DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld */; };
+		68FCE56D21DEF73B00AC3A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */; };
+		68FCE57021DEF73B00AC3A08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56E21DEF73B00AC3A08 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		68FCE55F21DEF73900AC3A08 /* HomeworkMe 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeworkMe 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68FCE56221DEF73900AC3A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		68FCE56421DEF73900AC3A08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68FCE56721DEF73900AC3A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68FCE56A21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeworkMe_2_0.xcdatamodel; sourceTree = "<group>"; };
+		68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68FCE56F21DEF73B00AC3A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68FCE57121DEF73B00AC3A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68FCE55C21DEF73900AC3A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68FCE55621DEF73900AC3A08 = {
+			isa = PBXGroup;
+			children = (
+				68FCE56121DEF73900AC3A08 /* HomeworkMe 2.0 */,
+				68FCE56021DEF73900AC3A08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68FCE56021DEF73900AC3A08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68FCE55F21DEF73900AC3A08 /* HomeworkMe 2.0.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68FCE56121DEF73900AC3A08 /* HomeworkMe 2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				68FCE56221DEF73900AC3A08 /* AppDelegate.swift */,
+				68FCE56421DEF73900AC3A08 /* ViewController.swift */,
+				68FCE56621DEF73900AC3A08 /* Main.storyboard */,
+				68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */,
+				68FCE56E21DEF73B00AC3A08 /* LaunchScreen.storyboard */,
+				68FCE57121DEF73B00AC3A08 /* Info.plist */,
+				68FCE56921DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld */,
+			);
+			path = "HomeworkMe 2.0";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68FCE55E21DEF73900AC3A08 /* HomeworkMe 2.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68FCE57421DEF73B00AC3A08 /* Build configuration list for PBXNativeTarget "HomeworkMe 2.0" */;
+			buildPhases = (
+				68FCE55B21DEF73900AC3A08 /* Sources */,
+				68FCE55C21DEF73900AC3A08 /* Frameworks */,
+				68FCE55D21DEF73900AC3A08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HomeworkMe 2.0";
+			productName = "HomeworkMe 2.0";
+			productReference = 68FCE55F21DEF73900AC3A08 /* HomeworkMe 2.0.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68FCE55721DEF73900AC3A08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = RayCo;
+				TargetAttributes = {
+					68FCE55E21DEF73900AC3A08 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 68FCE55A21DEF73900AC3A08 /* Build configuration list for PBXProject "HomeworkMe 2.0" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68FCE55621DEF73900AC3A08;
+			productRefGroup = 68FCE56021DEF73900AC3A08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68FCE55E21DEF73900AC3A08 /* HomeworkMe 2.0 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68FCE55D21DEF73900AC3A08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68FCE57021DEF73B00AC3A08 /* LaunchScreen.storyboard in Resources */,
+				68FCE56D21DEF73B00AC3A08 /* Assets.xcassets in Resources */,
+				68FCE56821DEF73900AC3A08 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68FCE55B21DEF73900AC3A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */,
+				68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */,
+				68FCE56B21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		68FCE56621DEF73900AC3A08 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68FCE56721DEF73900AC3A08 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68FCE56E21DEF73B00AC3A08 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68FCE56F21DEF73B00AC3A08 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68FCE57221DEF73B00AC3A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		68FCE57321DEF73B00AC3A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68FCE57521DEF73B00AC3A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2B5QD97WH;
+				INFOPLIST_FILE = "HomeworkMe 2.0/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RayCo.HomeworkMe-2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		68FCE57621DEF73B00AC3A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2B5QD97WH;
+				INFOPLIST_FILE = "HomeworkMe 2.0/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RayCo.HomeworkMe-2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68FCE55A21DEF73900AC3A08 /* Build configuration list for PBXProject "HomeworkMe 2.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68FCE57221DEF73B00AC3A08 /* Debug */,
+				68FCE57321DEF73B00AC3A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68FCE57421DEF73B00AC3A08 /* Build configuration list for PBXNativeTarget "HomeworkMe 2.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68FCE57521DEF73B00AC3A08 /* Debug */,
+				68FCE57621DEF73B00AC3A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		68FCE56921DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				68FCE56A21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodel */,
+			);
+			currentVersion = 68FCE56A21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodel */;
+			path = HomeworkMe_2_0.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 68FCE55721DEF73900AC3A08 /* Project object */;
+}
