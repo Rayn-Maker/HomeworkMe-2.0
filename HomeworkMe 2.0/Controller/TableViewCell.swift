@@ -25,7 +25,7 @@ class TableViewCell: UITableViewCell {
     
     var giveHelpPost: Post! {
         didSet {
-//            self.postText.numberOfLines = 0
+            self.givetHelpPostTitle.numberOfLines = 0
             self.updateGiveHelpUI()
         }
     }
@@ -36,7 +36,7 @@ class TableViewCell: UITableViewCell {
         self.giveHelpPostTime.text = giveHelpPost.timeSince
         self.giveHelpPostAuthr.text = giveHelpPost.authorName
         
-        if let imageDownloadURL = giveHelpPost.picUrl {
+        if let imageDownloadURL = giveHelpPost.postPic {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {
@@ -52,7 +52,7 @@ class TableViewCell: UITableViewCell {
 
             }
         }
-        if let imageDownloadURL = giveHelpPost.picUrl {
+        if let imageDownloadURL = giveHelpPost.postPic {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {
@@ -76,7 +76,7 @@ class TableViewCell: UITableViewCell {
     
     var getHelpPost: Post! {
         didSet {
-            //            self.postText.numberOfLines = 0
+            self.getHelpPostTitle.numberOfLines = 0
             self.updateGetHelpUI()
         }
     }
@@ -103,7 +103,7 @@ class TableViewCell: UITableViewCell {
         //
         //            }
         //        }
-        if let imageDownloadURL = getHelpPost.picUrl {
+        if let imageDownloadURL = getHelpPost.postPic {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {

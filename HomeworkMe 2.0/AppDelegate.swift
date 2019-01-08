@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleSignIn
-
+import GooglePlaces
+import GoogleMaps
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         logUser()
+//        logout()
+        GMSPlacesClient.provideAPIKey("AIzaSyDV7NWQ25BT5pISVM5b9vkRFJrK8TjXypY")
+        GMSServices.provideAPIKey("AIzaSyDV7NWQ25BT5pISVM5b9vkRFJrK8TjXypY")
         return true
     }
     
@@ -68,6 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if Auth.auth().currentUser != nil {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabVc") as! HomeTabBarVC
             self.window?.rootViewController = vc
+        }
+    }
+    func logout() {
+        if Auth.auth().currentUser != nil {
+            do {
+                try? Auth.auth().signOut()
+                GIDSignIn.sharedInstance().signOut()
+            } catch  {
+            }
         }
     }
      

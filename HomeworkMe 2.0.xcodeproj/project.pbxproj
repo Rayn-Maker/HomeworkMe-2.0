@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6856D1E021E1B937007BC3ED /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1DF21E1B937007BC3ED /* ProfileVC.swift */; };
+		6856D1E221E3E0B3007BC3ED /* PreSignUpSceenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */; };
+		6856D1E521E452BA007BC3ED /* SinglePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1E421E452BA007BC3ED /* SinglePostVC.swift */; };
 		68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56221DEF73900AC3A08 /* AppDelegate.swift */; };
 		68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56421DEF73900AC3A08 /* ViewController.swift */; };
 		68FCE56821DEF73900AC3A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56621DEF73900AC3A08 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		13B7A28F3EDC05C4B8962F1D /* Pods-HomeworkMe 2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeworkMe 2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeworkMe 2.0/Pods-HomeworkMe 2.0.debug.xcconfig"; sourceTree = "<group>"; };
+		6856D1DF21E1B937007BC3ED /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreSignUpSceenVC.swift; sourceTree = "<group>"; };
+		6856D1E421E452BA007BC3ED /* SinglePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostVC.swift; sourceTree = "<group>"; };
 		68FCE55F21DEF73900AC3A08 /* HomeworkMe 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeworkMe 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FCE56221DEF73900AC3A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68FCE56421DEF73900AC3A08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,17 @@
 				F81062BE364337341D7797C5 /* Pods_HomeworkMe_2_0.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6856D1E321E424D8007BC3ED /* userAcount */ = {
+			isa = PBXGroup;
+			children = (
+				6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */,
+				68FCE57E21DF070900AC3A08 /* SignUp.swift */,
+				68FCE57C21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift */,
+				6856D1DF21E1B937007BC3ED /* ProfileVC.swift */,
+			);
+			path = userAcount;
 			sourceTree = "<group>";
 		};
 		68FCE55621DEF73900AC3A08 = {
@@ -119,8 +136,8 @@
 		68FCE57821DEF7D600AC3A08 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
-				68FCE57E21DF070900AC3A08 /* SignUp.swift */,
-				68FCE57C21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift */,
+				6856D1E421E452BA007BC3ED /* SinglePostVC.swift */,
+				6856D1E321E424D8007BC3ED /* userAcount */,
 				68FCE5A821DFB0C300AC3A08 /* HomeTabBarVC.swift */,
 				68FCE5AC21DFB65C00AC3A08 /* AllClassesVC.swift */,
 			);
@@ -316,15 +333,18 @@
 				68FCE57D21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift in Sources */,
 				68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */,
 				68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */,
+				6856D1E221E3E0B3007BC3ED /* PreSignUpSceenVC.swift in Sources */,
 				68FCE5AB21DFB40B00AC3A08 /* OnboardingView.swift in Sources */,
 				68FCE5A921DFB0C300AC3A08 /* HomeTabBarVC.swift in Sources */,
 				68FCE56B21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld in Sources */,
 				68FCE5A321DFA87E00AC3A08 /* StripeClient.swift in Sources */,
 				68FCE5AD21DFB65C00AC3A08 /* AllClassesVC.swift in Sources */,
+				6856D1E021E1B937007BC3ED /* ProfileVC.swift in Sources */,
 				68FCE58121DF07C400AC3A08 /* Objects.swift in Sources */,
 				68FCE5AF21DFC7FA00AC3A08 /* TableViewCell.swift in Sources */,
 				68FCE57F21DF070900AC3A08 /* SignUp.swift in Sources */,
 				68FCE5A521DFA8BE00AC3A08 /* Constants.swift in Sources */,
+				6856D1E521E452BA007BC3ED /* SinglePostVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

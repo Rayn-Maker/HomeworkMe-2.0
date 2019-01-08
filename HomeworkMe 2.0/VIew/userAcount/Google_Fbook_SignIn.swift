@@ -16,7 +16,7 @@ class Google_Fbook_SignIn: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var pwField: UITextField!
     
-    
+    var window: UIWindow?
     var ref: DatabaseReference!
     var alert: CommonFunctions!
     
@@ -118,14 +118,13 @@ extension Google_Fbook_SignIn: GIDSignInUIDelegate, GIDSignInDelegate  {
                         if snapshot.hasChild(Auth.auth().currentUser?.uid ?? ""){
                             // already has account.... do nothing regarding firebase direct them to first screen.
                             
-                            let userInfo: [String: Any] = ["uid": Auth.auth().currentUser?.uid ?? "",
-                                                           "fName": user.profile.givenName ?? " ",
-                                                           "lName": user.profile.familyName ?? " ",
-                                                           "full_name": user.profile.name ?? " ",
-                                                           "email": user.profile.email ?? " "]
-                            //                        self.ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").setValue(userInfo)
+                            ProfileVC.student.firstName = user.profile.givenName
+                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "signUpIn") as! PreSignUpSceenVC
+                            self.present(newViewController, animated: true, completion: nil)
                             
                         } else {
+                            ProfileVC.student.firstName = user.profile.givenName
                             let userInfo: [String: Any] = ["uid": Auth.auth().currentUser?.uid ?? "",
                                                            "fName": user.profile.givenName ?? " ",
                                                            "lName": user.profile.familyName ?? " ",
@@ -143,8 +142,8 @@ extension Google_Fbook_SignIn: GIDSignInUIDelegate, GIDSignInDelegate  {
                             self.addCustomer(child: Auth.auth().currentUser?.uid ?? "", userEmail: user.profile.email)
                         }
                     })
-                    let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDel.logUser()
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "signUpIn") as! PreSignUpSceenVC
+                    self.window?.rootViewController = vc
                 }
             }
         }

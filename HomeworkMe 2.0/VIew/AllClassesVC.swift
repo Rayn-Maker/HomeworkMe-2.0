@@ -14,7 +14,7 @@ import Alamofire
 import MessageUI
 import paper_onboarding
 
-class AllClassesVC: UIViewController {
+class AllClassesVC: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var createNewPostView: UIView!
@@ -31,9 +31,9 @@ class AllClassesVC: UIViewController {
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var teacherLName: UITextField!
     @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var listOfClassesPicker: UIPickerView!
     
     
-    var student = Student()
     var isGiveHelp = false
     var isRequest = false
     var schedules = [String]()
@@ -46,7 +46,7 @@ class AllClassesVC: UIViewController {
     var notificationKeyName: String!
     var functions = CommonFunctions()
     var inSearching = false
-    var postCategory: String?
+    var postCategory = "Homework"
     var selectedClass: FetchObject?
     var devicNotes = [String]()
     var tutorsInClass = [String:AnyObject]()
@@ -54,13 +54,14 @@ class AllClassesVC: UIViewController {
     var allClassesArr = [FetchObject](); var allClassesArrFilterd = [FetchObject]()
     var myPostArrReq = [Post](); var hmwrkArrReq = [Post](); var testArrReq = [Post](); var notesArrReq = [Post](); var otherArrReq = [Post](); var tutorArrReq = [Post](); var allPostHolderReq = [Post]()
     var tableViewSections = ["All","Homework", "Test","Notes","Tutoring","Other"]
+    var myClasses = [FetchObject]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let currentDate: Date = Date()
-        dismissKeyboard()
+ 
+        dismissKeyboard(); addKeyBrdButn(textField: classText); addKeyBrdButn(textField: postTitle); addKeyBrdButn(textField: teacherLName); addKeyBrdButn(textField: price)
+        
         postsTableView.rowHeight = 82
         requestsTableView.rowHeight = 82
 //        onBoardingView.dataSource = self
@@ -71,12 +72,13 @@ class AllClassesVC: UIViewController {
                 onBoardingView.isHidden = true
             }
         }
+        
     }
     
     @IBAction func addPostPrsd(_ sender: Any) {
         let ref = Database.database().reference()
 //        greyBkGrnd.isHidden = false
-        if student.paymentSource != nil {
+        if ProfileVC.student.paymentSource != nil {
             let alert4 = UIAlertController(title: "Give or Get help", message: "", preferredStyle: .alert)
             let giveHelp = UIAlertAction(title: "Give Help", style: .default) { (_) in
                 self.isGiveHelp = true
@@ -112,7 +114,7 @@ class AllClassesVC: UIViewController {
                         let ar = ["Zelle",text]
                         let par = ["paymentSource":ar] as [String:[String]]
                         ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").updateChildValues(par)
-                        self.student.paymentSource = par
+                        ProfileVC.student.paymentSource = ar
                     }
                 }
                 alert1.addAction(Add); alert1.addAction(cancel)
@@ -134,7 +136,7 @@ class AllClassesVC: UIViewController {
                         let ar = ["Zelle",text]
                         let par = ["paymentSource":ar] as [String:[String]]
                         ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").updateChildValues(par)
-                        self.student.paymentSource = par
+                        ProfileVC.student.paymentSource = ar
                     }
                 }
                 alert2.addAction(Add); alert2.addAction(cancel)
@@ -156,7 +158,7 @@ class AllClassesVC: UIViewController {
                         let ar = ["Zelle",text]
                         let par = ["paymentSource":ar] as [String:[String]]
                         ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").updateChildValues(par)
-                        self.student.paymentSource = par
+                        ProfileVC.student.paymentSource = ar
                     }
                 }
                 alert3.addAction(Add); alert3.addAction(cancel)
@@ -211,6 +213,21 @@ class AllClassesVC: UIViewController {
         }
     }
     
+    @IBAction func hidePicker(_ sender: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.listOfClassesPicker.isHidden = true
+        }
+    }
+    
+    @IBAction func addClassWithPicker(_ sender: UITextField) {
+//        self.view.endEditing(true)
+//        self.createNewPostView.endEditing(true)
+        classText.resignFirstResponder()
+        UIView.animate(withDuration: 0.3) {
+            self.listOfClassesPicker.isHidden = false
+        }
+    }
+    
     @IBAction func srchInCls(_ sender: UITextField) {
         inSearching = true
         if sender.text! == "" {
@@ -228,19 +245,21 @@ class AllClassesVC: UIViewController {
         }
     }
     
-    @IBAction func createPost(_ sender: Any) {
+    @objc func createPost(_ sender: Any) {
         creatPost()
         UIView.animate(withDuration: 0.3) {
             self.createNewPostView.isHidden = true
             self.greyBkGrnd.isHidden = true
         }
+        self.view.endEditing(true)
     }
     
-    @IBAction func cancelPost(_ sender: Any) {
+    @objc func cancelPost(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             self.createNewPostView.isHidden = true
             self.greyBkGrnd.isHidden = true
         }
+        self.view.endEditing(true)
     }
     
     func fetchStudent() {
@@ -255,7 +274,19 @@ class AllClassesVC: UIViewController {
                 if let dict = myclass["Classes"] as? [String : AnyObject] {
                     for (x,y) in dict {
                         self.fetchMyPostsKey(clasUid: x)
+                        var classs = FetchObject()
+                        classs.title = y["className"] as? String
+                        classs.uid = y["uid"] as? String 
+                        self.myClasses.append(classs)
                     }
+                    self.myClasses.sort(by:{ $0.title! < $1.title! } )
+                    self.listOfClassesPicker.reloadAllComponents()
+                }
+                if let paySrc = myclass["paymentSource"] as? [String] {
+                    ProfileVC.student.paymentSource = paySrc
+                }
+                if let paySrc = myclass["phoneNumber"] as? String {
+                    ProfileVC.student.phoneNumber = paySrc
                 }
             }
         })
@@ -367,9 +398,7 @@ class AllClassesVC: UIViewController {
         if let lname = UserDefaults.standard.object(forKey: "lName") as? String {
             authorLname = lname
         } // UserDefaults.standard.set(phone, forKey: "phoneNumber")
-        if let phone = UserDefaults.standard.object(forKey: "phoneNumber") as? String {
-            phoneNumber = phone
-        }
+        
         if postTitle.text != "" || postTitle.text != nil {
             let name = postTitle.text! + " " + classText.text! + " " + teacherLName.text! + " " + price.text!
             
@@ -384,7 +413,7 @@ class AllClassesVC: UIViewController {
                 "postPic": picUrl,
                 "classId": self.selectedClass?.uid ?? "",
                 "className":self.selectedClass?.title ?? "",
-                "phoneNumber":phoneNumber as Any] as? [String : Any]
+                "phoneNumber":Int(ProfileVC.student.phoneNumber ?? "") as Any] as? [String : Any]
             
             
             let postParam = [postKey : parameters]
@@ -393,7 +422,7 @@ class AllClassesVC: UIViewController {
                 ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").child("Myposts").updateChildValues(postParam ?? [:])
                 ref.child("Posts").child(postKey ?? "").updateChildValues(parameters!)
                 ref.child("Classes").child(self.selectedClass?.uid! ?? "").child("Posts").child("GiveHelp").updateChildValues(postParam)
-                
+
                 self.callForHelp(title: "HomeworkMe Assignement Offer", body: "Your classmate in \(self.selectedClass?.title ?? ""), is helping with \(name ?? "")")
             } else {
                 ref.child("Students").child(Auth.auth().currentUser?.uid ?? "").child("Myposts").updateChildValues(postParam ?? [:])
@@ -407,6 +436,26 @@ class AllClassesVC: UIViewController {
         }
     }
 
+    func addKeyBrdButn(textField: UITextField){
+        //init toolbar
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        //create left side empty space so that done button set on right side
+//        DoneBut.addTarget(self, action: #selector(ProfileVC.buttonTapped(sender:)), for: .touchUpInside)
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Post", style: .done, target: self, action: #selector(AllClassesVC.createPost(_:)))
+        
+        let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(AllClassesVC.cancelPost(_:)))
+        
+        toolbar.setItems([cancel, flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonAction(sender: UIButton) {
+        self.view.endEditing(true)
+    }
  
     func imageWithImage(image:UIImage,scaledToSize newSize:CGSize)-> UIImage {
         
@@ -436,6 +485,15 @@ class AllClassesVC: UIViewController {
         })
         
         classSearch.reloadData()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        creatPost()
+//        UIView.animate(withDuration: 0.3) {
+//            self.createNewPostView.isHidden = true
+//            self.greyBkGrnd.isHidden = true
+//        }
+        return true
     }
     
     fileprivate func checkNotif(fromDevice:String, title:String, body:String)
@@ -474,6 +532,13 @@ class AllClassesVC: UIViewController {
             print(response)
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == seg {
+            let vc = segue.destination as? SinglePostVC
+            vc?.fetchObject = self.postObject
+        }
     }
 
 }
@@ -703,4 +768,23 @@ extension AllClassesVC: UITableViewDataSource, UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 82
 //    }
+}
+
+extension AllClassesVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return myClasses.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return myClasses[row].title
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedClass = myClasses[row]
+        classText.text = selectedClass?.title
+    }
 }

@@ -18,13 +18,12 @@ class Student {
     var password: String?
     var school: [String]?
     var classes: [Classroom]?
-    var meetUpLocations: [Place]?
+    var meetUpLocations = [Place]()
     var customerId: String?
     var deviceNotificationTokern: String?
-    var phoneNumber: Int?
-    var status: Status?
+    var phoneNumber: String? 
     var uid: String?
-    var paymentSource: [String:[String]]?
+    var paymentSource: [String]?
     var currLoc: Place?
     var hasCard: Bool?
     var notificationKey: String?
@@ -34,7 +33,7 @@ class Student {
     var ratings: String?
     var endTime = Date()
     var isTutor = Bool()
-    
+    var tutorStatus: String?
     
     
 //    var schedule: [String]! schedule a date with a tutor, tutor must accept ammend or reject.
@@ -84,10 +83,6 @@ class Request {
     var sessionPrice:Int!
 }
 
-enum Status {
-    case off
-    case on
-}
 
 enum Location {
     case startLocation
@@ -274,6 +269,7 @@ struct FetchObject {
     var subName:String!
     var uniID: String?
     var uniName: String?
+    var markCell = Bool()
     var Notification_Devices = [String]()
 }
 
