@@ -12,9 +12,12 @@ import Firebase
 import GoogleSignIn
 import GooglePlaces
 import GoogleMaps
+import FirebaseMessaging
+import UserNotifications
+
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var seconds = 1200
@@ -35,7 +38,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        logout()
         GMSPlacesClient.provideAPIKey("AIzaSyDV7NWQ25BT5pISVM5b9vkRFJrK8TjXypY")
         GMSServices.provideAPIKey("AIzaSyDV7NWQ25BT5pISVM5b9vkRFJrK8TjXypY")
+        UNUserNotificationCenter.current().delegate = self
+        application.registerForRemoteNotifications()
         return true
+    }
+    
+    //notifications configuration
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        guard  let newToken = InstanceID.instanceID().token() else {return}
+        ProfileVC.student.deviceNotificationTokern = newToken
+        connectToFCM()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        //
+    }
+    
+    func connectToFCM()
+    {
+        Messaging.messaging().shouldEstablishDirectChannel = true
+    }
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        
+        if ( application.applicationState == .inactive || application.applicationState == .background){
+            logUser()
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -51,11 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // ...
     }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
             return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
@@ -67,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                  sourceApplication: sourceApplication,
                                                  annotation: annotation)
     }
+    
     
     func logUser(){
         if Auth.auth().currentUser != nil {

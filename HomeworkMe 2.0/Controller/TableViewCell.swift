@@ -34,9 +34,9 @@ class TableViewCell: UITableViewCell {
     func updateGiveHelpUI() {
         self.givetHelpPostTitle.text = giveHelpPost.title
         self.giveHelpPostTime.text = giveHelpPost.timeSince
-        self.giveHelpPostAuthr.text = giveHelpPost.authorName
+        self.giveHelpPostAuthr.text = giveHelpPost.authorFullName
         
-        if let imageDownloadURL = giveHelpPost.postPic {
+        if let imageDownloadURL = giveHelpPost.authorPicUrl {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {
@@ -52,7 +52,7 @@ class TableViewCell: UITableViewCell {
 
             }
         }
-        if let imageDownloadURL = giveHelpPost.postPic {
+        if let imageDownloadURL = giveHelpPost.authorPicUrl {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {
@@ -85,7 +85,7 @@ class TableViewCell: UITableViewCell {
     func updateGetHelpUI() {
         self.getHelpPostTitle.text = getHelpPost.title
         self.getHelpPostTime.text = getHelpPost.timeSince
-        self.getHelpPostAuthr.text = getHelpPost.authorName
+        self.getHelpPostAuthr.text = getHelpPost.authorFullName
         
         //        if let imageDownloadURL = giveHelpPost.picUrl {
         //            let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
@@ -103,7 +103,7 @@ class TableViewCell: UITableViewCell {
         //
         //            }
         //        }
-        if let imageDownloadURL = getHelpPost.postPic {
+        if let imageDownloadURL = getHelpPost.authorPicUrl {
             let imageStorageRef = Storage.storage().reference(forURL: imageDownloadURL)
             imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { [weak self] (data, error) in
                 if let error = error {

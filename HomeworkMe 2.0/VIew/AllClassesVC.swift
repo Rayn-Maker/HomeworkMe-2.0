@@ -27,12 +27,11 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var onBoardingView: OnboardingView!
     @IBOutlet weak var getStarted: UIButton!
     @IBOutlet weak var switchViewBtn: UIButton!
-    @IBOutlet weak var classText: UITextField!
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var teacherLName: UITextField!
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var listOfClassesPicker: UIPickerView!
-    
+    @IBOutlet weak var classBtn: UIButton!
     
     var isGiveHelp = false
     var isRequest = false
@@ -55,12 +54,12 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
     var myPostArrReq = [Post](); var hmwrkArrReq = [Post](); var testArrReq = [Post](); var notesArrReq = [Post](); var otherArrReq = [Post](); var tutorArrReq = [Post](); var allPostHolderReq = [Post]()
     var tableViewSections = ["All","Homework", "Test","Notes","Tutoring","Other"]
     var myClasses = [FetchObject]()
-    
+    var postImage = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        dismissKeyboard(); addKeyBrdButn(textField: classText); addKeyBrdButn(textField: postTitle); addKeyBrdButn(textField: teacherLName); addKeyBrdButn(textField: price)
+        dismissKeyboard(); addKeyBrdButn(textField: postTitle); addKeyBrdButn(textField: teacherLName); addKeyBrdButn(textField: price)
         
         postsTableView.rowHeight = 82
         requestsTableView.rowHeight = 82
@@ -215,14 +214,11 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func hidePicker(_ sender: UITextField) {
         UIView.animate(withDuration: 0.3) {
-            self.listOfClassesPicker.isHidden = true
+//            self.listOfClassesPicker.isHidden = true
         }
     }
     
-    @IBAction func addClassWithPicker(_ sender: UITextField) {
-//        self.view.endEditing(true)
-//        self.createNewPostView.endEditing(true)
-        classText.resignFirstResponder()
+    @IBAction func addClassWithPicker(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             self.listOfClassesPicker.isHidden = false
         }
@@ -246,12 +242,19 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func createPost(_ sender: Any) {
-        creatPost()
-        UIView.animate(withDuration: 0.3) {
-            self.createNewPostView.isHidden = true
-            self.greyBkGrnd.isHidden = true
+        if !(teacherLName.text?.isEmpty)! && !(postTitle.text?.isEmpty)! && !(price.text?.isEmpty)! &&  selectedClass?.title != nil {
+            creatPost()
+            UIView.animate(withDuration: 0.3) {
+                self.createNewPostView.isHidden = true
+                self.greyBkGrnd.isHidden = true
+            }
+            self.view.endEditing(true)
+        } else {
+            let alert = UIAlertController(title: "Missing Fields", message: "Kindly fill out all fields", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler:  nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
         }
-        self.view.endEditing(true)
     }
     
     @objc func cancelPost(_ sender: Any) {
@@ -287,6 +290,24 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
                 }
                 if let paySrc = myclass["phoneNumber"] as? String {
                     ProfileVC.student.phoneNumber = paySrc
+                } // senderCustId senderDeviceTok
+                if let pictureURl = myclass["pictureUrl"] as? String {
+                    ProfileVC.student.pictureUrl = pictureURl
+                }
+                if let fname = myclass["full_name"] as? String {
+                    ProfileVC.student.fullName = fname
+                }
+                if let fromDevice = myclass["fromDevice"] as? String {
+                    ProfileVC.student.deviceNotificationTokern = fromDevice
+                }
+                if let customer = myclass["customerId"] as? String {
+                    ProfileVC.student.customerId = customer
+                }
+                if let stsus = myclass["status"] as? String {
+                    ProfileVC.student.tutorStatus = stsus
+                }
+                if let email = myclass["email"] as? String {
+                    ProfileVC.student.email = email 
                 }
             }
         })
@@ -400,9 +421,9 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
         } // UserDefaults.standard.set(phone, forKey: "phoneNumber")
         
         if postTitle.text != "" || postTitle.text != nil {
-            let name = postTitle.text! + " " + classText.text! + " " + teacherLName.text! + " " + price.text!
+            let name = "\(postTitle.text!) \(self.selectedClass?.title!) \(teacherLName.text!) $\(price.text!)"
             
-            let parameters = ["uid":postKey,
+            let parameters = ["uid":postKey!,
                               "name": name,
                               "authorID":Auth.auth().currentUser?.uid ?? " ",
                               "authorEmail": authrName ?? " ",
@@ -538,6 +559,7 @@ class AllClassesVC: UIViewController, UITextFieldDelegate {
         if segue.identifier == seg {
             let vc = segue.destination as? SinglePostVC
             vc?.fetchObject = self.postObject
+            vc?.postImage = self.postImage
         }
     }
 
@@ -706,60 +728,75 @@ extension AllClassesVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == postsTableView {
+            let cell = postsTableView.cellForRow(at: indexPath) as? TableViewCell
             self.isOffering = true
             switch (indexPath.section) { //["All","Homework", "Test","Notes","Tutoring","Other"]
             case 0:
                 postObject = myPostArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 1:
                 postObject = hmwrkArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 2:
                 postObject = testArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 3:
                 postObject = notesArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 4:
                 postObject = tutorArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 5:
                 postObject = otherArr[indexPath.row]
+                self.postImage = (cell?.giveHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             default:
                 print(seg)
             }
         } else if tableView == requestsTableView {
+            let cell = requestsTableView.cellForRow(at: indexPath) as? TableViewCell
             self.isOffering = false
             switch (indexPath.section) { //["All","Homework", "Test","Notes","Tutoring","Other"]
             case 0:
                 postObject = myPostArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 1:
                 postObject = hmwrkArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 2:
                 postObject = testArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 3:
                 postObject = notesArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 4:
                 postObject = tutorArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             case 5:
                 postObject = otherArrReq[indexPath.row]
+                self.postImage = (cell?.getHelpImage.image)!
                 self.performSegue(withIdentifier: seg, sender: self)
             default:
                 print(seg)
             }
         } else if tableView == classSearch {
             if inSearching {
-                classText.text = allClassesArrFilterd[indexPath.row].title
-                selectedClass = allClassesArrFilterd[indexPath.row]
+//                classBtn.setTitle(allClassesArrFilterd[indexPath.row].title, for: .normal)
+//
+//                selectedClass = allClassesArrFilterd[indexPath.row]
             } else {
-                classText.text = allClassesArr[indexPath.row].title
-                selectedClass = allClassesArr[indexPath.row]
+//                classText.text = allClassesArr[indexPath.row].title
+//                selectedClass = allClassesArr[indexPath.row]
             }
         }
         
@@ -785,6 +822,7 @@ extension AllClassesVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedClass = myClasses[row]
-        classText.text = selectedClass?.title
+        classBtn.setTitle(selectedClass?.title, for: .normal)
     }
+    
 }

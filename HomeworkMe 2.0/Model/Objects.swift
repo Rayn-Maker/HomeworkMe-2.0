@@ -26,7 +26,6 @@ class Student {
     var paymentSource: [String]?
     var currLoc: Place?
     var hasCard: Bool?
-    var notificationKey: String?
     var pictureUrl: String?
     var posts: [Post]?
     var profilepic: Data?
@@ -39,16 +38,17 @@ class Student {
 //    var schedule: [String]! schedule a date with a tutor, tutor must accept ammend or reject.
 //    var major: String!
 //    var schoolEmail:String!
-//    var requestsArrPending = [Request]()
-//    var requestsArrAccepted = [Request]()
-//    var requestsArrRejected = [Request]()
-//    var requestsArrHistory = [Request]()
-//    var requestsSentPending = [Request]()
-//    var requestsSentApprd = [Request]()
-//    var requestsSentReject = [Request]()
-//    var request = Request()
-//    var sentObject = [String:AnyObject]()
-//    var receivedObject = [String:AnyObject]()
+    var receivedAptsPending = [Request]()
+    var receivedAptsAcptd = [Request]()
+    var receivedAptsRjctd = [Request]()
+    var receivedAptsHstry = [Request]()
+    var sendAptsPending = [Request]()
+    var sendAptsAcptd = [Request]()
+    var sentAptsRjctd = [Request]()
+    var sentAptsHstry = [Request]()
+    var request = Request()
+    var sentObject = [String:AnyObject]()
+    var receivedObject = [String:AnyObject]()
 //    var coorLocCoord = String()
 //    var coorLocName = String()
 }
@@ -62,7 +62,8 @@ class Request {
     var senderPicUrl: String!
     var senderDevice: String!
     var senderCustomerId:String!
-    
+    var apointmentDate: String!
+    var apointmentDateDate: Date!
     var receiverPhoneNumber: String!
     var receiverCustomerId:String!
     var receiverName: String!
@@ -110,31 +111,20 @@ class Post {
     var timeStamp: Date?
     var uid: String?
     var category:String?
-    var authorName: String?
-    var authorEmail: String!
     var authorID: String?
     var price: Int!
     var data: Data!
-    var postPic: String!
     var studentInClas: Bool!
     var schedule = [String]()
-    var likers = [String]()
     var disLikers = [String]()
     var notes = [Note]()
     var noteDict = [String:String]()
-    var phoneNumber = String()
-    
-    var caption: String!
-    var downloadURL: String?
+    var phoneNumber: String?
     var authorEmal: String!
     var authorFullName: String!
     var authorPicUrl: String!
-    var postId: String!
-    var postText: String!
     var timeStampDate: Date!
     var timeSince: String!
-    var picUrl: String!
-    var authId: String!
     
     var functions = CommonFunctions()
     
@@ -150,7 +140,6 @@ class Post {
     
     init(image: UIImage, caption:String, authorEmail:String, authorFullName:String, authorPicUrl:String) {
         self.image = image
-        self.caption = caption
         self.authorPicUrl = authorPicUrl
         self.authorFullName = authorFullName
         self.authorEmal = authorEmail
@@ -158,9 +147,9 @@ class Post {
     
     init(b:AnyObject) {
             if let fname = b["authorName"] as? String {
-                self.authorName = fname
+                self.authorFullName = fname
             } else {
-                self.authorName = " "
+                self.authorFullName = " "
             }
             if let uid = b["uid"] {
                 self.uid = uid as? String
@@ -172,10 +161,10 @@ class Post {
                 self.authorID = authId as? String
             } //postPic
         if let postPic = b["postPic"] {
-            self.postPic = postPic as? String
+            self.authorPicUrl = postPic as? String
         }
             if let authEmal = b["authorEmail"] {
-                self.authorEmail = authEmal as? String
+                self.authorEmal = authEmal as? String
             }
             if let tmStmp = b["timeStamp"] {
                 let dateFormatter = DateFormatter()
@@ -195,6 +184,9 @@ class Post {
             } else {
                 self.price = 0
             }
+        if let phone = b["phoneNumber"] {
+            self.phoneNumber = phone as? String
+        }
     }
     /*
     func save() {

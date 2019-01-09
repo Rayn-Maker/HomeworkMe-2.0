@@ -436,13 +436,16 @@ class ProfileVC: UIViewController,  UIImagePickerControllerDelegate, UINavigatio
     }
     
     func markCell(id: String) -> Bool {
-        for x in 0...myClassesArr.count - 1 {
-            if myClassesArr[x].uid == id {
-                return true
-            } else {
-
+        if !myClassesArr.isEmpty {
+            for x in 0...myClassesArr.count - 1 {
+                if myClassesArr[x].uid == id {
+                    return true
+                } else {
+                    
+                }
             }
         }
+        
         return false
     }
     
@@ -520,7 +523,6 @@ class ProfileVC: UIViewController,  UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             self.profilePic.image = image
-            ProfileVC.student.pictureUrl = "url"
         }
         self.dismiss(animated: true, completion: nil)
     }

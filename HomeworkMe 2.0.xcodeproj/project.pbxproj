@@ -10,11 +10,13 @@
 		6856D1E021E1B937007BC3ED /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1DF21E1B937007BC3ED /* ProfileVC.swift */; };
 		6856D1E221E3E0B3007BC3ED /* PreSignUpSceenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */; };
 		6856D1E521E452BA007BC3ED /* SinglePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856D1E421E452BA007BC3ED /* SinglePostVC.swift */; };
+		68B6ADCF21E4A874007FC578 /* AppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B6ADCE21E4A874007FC578 /* AppointmentsVC.swift */; };
+		68B6ADD121E59C25007FC578 /* AddClassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B6ADD021E59C25007FC578 /* AddClassVC.swift */; };
+		68B6ADD521E5FFCC007FC578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B6ADD421E5FFCB007FC578 /* Assets.xcassets */; };
 		68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56221DEF73900AC3A08 /* AppDelegate.swift */; };
 		68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56421DEF73900AC3A08 /* ViewController.swift */; };
 		68FCE56821DEF73900AC3A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56621DEF73900AC3A08 /* Main.storyboard */; };
 		68FCE56B21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE56921DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld */; };
-		68FCE56D21DEF73B00AC3A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */; };
 		68FCE57021DEF73B00AC3A08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE56E21DEF73B00AC3A08 /* LaunchScreen.storyboard */; };
 		68FCE57B21DEF8A500AC3A08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68FCE57A21DEF8A500AC3A08 /* GoogleService-Info.plist */; };
 		68FCE57D21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FCE57C21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift */; };
@@ -34,12 +36,14 @@
 		6856D1DF21E1B937007BC3ED /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreSignUpSceenVC.swift; sourceTree = "<group>"; };
 		6856D1E421E452BA007BC3ED /* SinglePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostVC.swift; sourceTree = "<group>"; };
+		68B6ADCE21E4A874007FC578 /* AppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsVC.swift; sourceTree = "<group>"; };
+		68B6ADD021E59C25007FC578 /* AddClassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassVC.swift; sourceTree = "<group>"; };
+		68B6ADD421E5FFCB007FC578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68FCE55F21DEF73900AC3A08 /* HomeworkMe 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeworkMe 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FCE56221DEF73900AC3A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68FCE56421DEF73900AC3A08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		68FCE56721DEF73900AC3A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68FCE56A21DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeworkMe_2_0.xcdatamodel; sourceTree = "<group>"; };
-		68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68FCE56F21DEF73B00AC3A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68FCE57121DEF73B00AC3A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68FCE57A21DEF8A500AC3A08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 		6856D1E321E424D8007BC3ED /* userAcount */ = {
 			isa = PBXGroup;
 			children = (
+				68B6ADD021E59C25007FC578 /* AddClassVC.swift */,
 				6856D1E121E3E0B3007BC3ED /* PreSignUpSceenVC.swift */,
 				68FCE57E21DF070900AC3A08 /* SignUp.swift */,
 				68FCE57C21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift */,
@@ -114,8 +119,8 @@
 				68FCE56221DEF73900AC3A08 /* AppDelegate.swift */,
 				68FCE56421DEF73900AC3A08 /* ViewController.swift */,
 				68FCE56621DEF73900AC3A08 /* Main.storyboard */,
-				68FCE56C21DEF73B00AC3A08 /* Assets.xcassets */,
 				68FCE56E21DEF73B00AC3A08 /* LaunchScreen.storyboard */,
+				68B6ADD421E5FFCB007FC578 /* Assets.xcassets */,
 				68FCE57121DEF73B00AC3A08 /* Info.plist */,
 				68FCE57A21DEF8A500AC3A08 /* GoogleService-Info.plist */,
 				68FCE56921DEF73900AC3A08 /* HomeworkMe_2_0.xcdatamodeld */,
@@ -136,10 +141,11 @@
 		68FCE57821DEF7D600AC3A08 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
-				6856D1E421E452BA007BC3ED /* SinglePostVC.swift */,
 				6856D1E321E424D8007BC3ED /* userAcount */,
 				68FCE5A821DFB0C300AC3A08 /* HomeTabBarVC.swift */,
 				68FCE5AC21DFB65C00AC3A08 /* AllClassesVC.swift */,
+				6856D1E421E452BA007BC3ED /* SinglePostVC.swift */,
+				68B6ADCE21E4A874007FC578 /* AppointmentsVC.swift */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -224,8 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68FCE57021DEF73B00AC3A08 /* LaunchScreen.storyboard in Resources */,
-				68FCE56D21DEF73B00AC3A08 /* Assets.xcassets in Resources */,
 				68FCE57B21DEF8A500AC3A08 /* GoogleService-Info.plist in Resources */,
+				68B6ADD521E5FFCC007FC578 /* Assets.xcassets in Resources */,
 				68FCE56821DEF73900AC3A08 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B6ADD121E59C25007FC578 /* AddClassVC.swift in Sources */,
 				68FCE57D21DEFAA700AC3A08 /* Google_Fbook_SignIn.swift in Sources */,
 				68FCE56521DEF73900AC3A08 /* ViewController.swift in Sources */,
 				68FCE56321DEF73900AC3A08 /* AppDelegate.swift in Sources */,
@@ -340,6 +347,7 @@
 				68FCE5A321DFA87E00AC3A08 /* StripeClient.swift in Sources */,
 				68FCE5AD21DFB65C00AC3A08 /* AllClassesVC.swift in Sources */,
 				6856D1E021E1B937007BC3ED /* ProfileVC.swift in Sources */,
+				68B6ADCF21E4A874007FC578 /* AppointmentsVC.swift in Sources */,
 				68FCE58121DF07C400AC3A08 /* Objects.swift in Sources */,
 				68FCE5AF21DFC7FA00AC3A08 /* TableViewCell.swift in Sources */,
 				68FCE57F21DF070900AC3A08 /* SignUp.swift in Sources */,
@@ -494,6 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2B5QD97WH;
 				INFOPLIST_FILE = "HomeworkMe 2.0/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,6 +522,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2B5QD97WH;
 				INFOPLIST_FILE = "HomeworkMe 2.0/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

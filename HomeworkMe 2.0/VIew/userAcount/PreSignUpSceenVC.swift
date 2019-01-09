@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class PreSignUpSceenVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -26,6 +27,8 @@ class PreSignUpSceenVC: UIViewController, UIImagePickerControllerDelegate, UINav
         
         dismissKeyboard()
         editImage(image: profilePic)
+        registerNotifs()
+//        Messaging.messaging().delegate = self
     }
     
     @IBAction func editPicPrsd(_ sender: Any) {
@@ -45,6 +48,19 @@ class PreSignUpSceenVC: UIViewController, UIImagePickerControllerDelegate, UINav
         }
     }
     
+    func registerNotifs(){
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+        }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
@@ -97,9 +113,11 @@ class PreSignUpSceenVC: UIViewController, UIImagePickerControllerDelegate, UINav
                 }
             })
         })
-        let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDel.logUser()
         uploadTask.resume()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "addClassVC") as! AddClassVC
+        self.present(newViewController, animated: true, completion: nil)
+        
     }
     
 }
